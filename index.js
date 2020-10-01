@@ -8,11 +8,22 @@
 //TODO: object of answers expected from inquirer, use these answers to pass into my readme gen function. Check module.exports
 //TODO:write file using template generated from readme function
 //TODO: use back ticks e.g. return `# ${data.title}`
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
+//TODO: 
+
+
+// array of questions for user
+const questions = [
+
+];
+
+// function to write README file
+function writeToFile(fileName, data) {
+}
+
+// function to initialize program
+function init() {
+
+}
+
+// function call to initialize program
+init();
