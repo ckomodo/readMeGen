@@ -13,9 +13,54 @@
 
 // array of questions for user
 const questions = [
-
+    {
+        type: "input",
+        name: "Title",
+        message: "What's the title of your project?"
+    },
+    {
+        type: "input",
+        name: "Description",
+        message: "Please describe your project"
+    },
+    {
+        type: "input",
+        name: "Table of contents",
+        message: "What are the contents of your README file?"
+    },
+    {
+        type: "input",
+        name: "Installation",
+        message: "What's the installation process of your program?"
+    },
+    {
+        type: "input",
+        name: "Usage",
+        message: "What is your program used for?"
+    },
+    {
+        type: "input",
+        name: "License",
+        message: "What's the license for your program",
+        choices: ["free", "private", "commercial", "academic"]
+    },
+    {
+        type: "input",
+        name: "Contributing",
+        message: "Who worked on or contributed to this program?"
+    },
+    {
+        type: "input",
+        name: "Test",
+        message: "Please write the test instructions for your program"
+    },
+    {
+        type: "input",
+        name: "QuestionsDescription",
+        message: ["What is your Github username?", "What is your email address?"]
+    },
 ];
-
+console.log(questions);
 // function to write README file
 function writeToFile(fileName, data) {
 }
