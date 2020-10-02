@@ -12,7 +12,9 @@
 
 const inquirer = require("inquirer")
 const fs = require("fs")
-const newMarkDown = require("./generateMarkdown.js")
+// const newMarkDown = require("./generateMarkdown.js")
+const  markDown  = require("./generateMarkdown.js");
+const newMarkDown = generateMarkDown();
 // console.log(newMarkDown.markDown());
 // array of questions for user
 const questions = inquirer.prompt([
@@ -42,10 +44,16 @@ const questions = inquirer.prompt([
         message: "What is your program used for?"
     },
     {
-        type: "input",
+        type: "checkbox",
         name: "License",
-        message: "What's the license for your program",
-        choices: ["free", "private", "commercial", "academic"]
+        message: "What's the license for your program?",
+        choices:  [
+            
+            "free", 
+            "private",
+            "commercial", 
+            "academic"
+        ]
     },
     {
         type: "input",
@@ -60,17 +68,31 @@ const questions = inquirer.prompt([
     {
         type: "input",
         name: "Questions",
-        message: ["What is your Github username?", "What is your email address?"]
+        message: ["Type in your Github username and email address"]
     },
-]).then(function(data){
-    console.log(data)
-})
-    
+]).then(function (data) {
+    console.log(data);
+    fs.writeFile("README.md", JSON.stringify(data, null, 2), function(err){
+        if (err){
+            console.log(err);
+        }else{
+            console.log("README created!");
+        }
+    })
+    generateMarkDown();
+});
 
 // function to write README file
-function writeToFile(fileName, data) {
-
-}
+// function writeToFile(fileName, data) {
+//     fs.writeFile("README.md", markDown, function(err){
+//         if (err){
+//             console.log(err);
+//         }else{
+//             console.log("README created!");
+//         }
+//     })
+    
+// }
 
 // function to initialize program
 function init() {
