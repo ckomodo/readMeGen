@@ -10,9 +10,12 @@
 //TODO: use back ticks e.g. return `# ${data.title}`
 //TODO: 
 
-
+const inquirer = require("inquirer")
+const fs = require("fs")
+const newMarkDown = require("./generateMarkdown.js")
+// console.log(newMarkDown.markDown());
 // array of questions for user
-const questions = [
+const questions = inquirer.prompt([
     {
         type: "input",
         name: "Title",
@@ -25,7 +28,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "Table of contents",
+        name: "Contents",
         message: "What are the contents of your README file?"
     },
     {
@@ -56,13 +59,17 @@ const questions = [
     },
     {
         type: "input",
-        name: "QuestionsDescription",
+        name: "Questions",
         message: ["What is your Github username?", "What is your email address?"]
     },
-];
-console.log(questions);
+]).then(function(data){
+    console.log(data)
+})
+    
+
 // function to write README file
 function writeToFile(fileName, data) {
+
 }
 
 // function to initialize program
