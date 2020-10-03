@@ -131,7 +131,7 @@ inquirer.prompt(questions).then(function (data) { // prints each response to rea
         }
        
     })
-    fs.appendFileSync("README.md", ("# Github" + '\n' + data.Github) + '\n', function (err){
+    fs.appendFileSync("README.md", ("# Github Username" + '\n' + data.Github) + '\n', function (err){
         if (err){
             return console.log(err);
         }else{
