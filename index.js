@@ -11,10 +11,13 @@
 //TODO: 
 
 const inquirer = require("inquirer")
-const fs = require("fs")
+const fs = require("fs");
+const markDown = require("./generateMarkdown.js");
 // const newMarkDown = require("./generateMarkdown.js")
-const  markDown  = require("./generateMarkdown.js");
-const newMarkDown = generateMarkDown();
+require ("./generateMarkdown.js");
+// const writeReadMe = markDown();
+
+// const newMarkDown = generateMarkDown();
 // console.log(newMarkDown.markDown());
 // array of questions for user
 const questions = inquirer.prompt([
@@ -72,14 +75,16 @@ const questions = inquirer.prompt([
     },
 ]).then(function (data) {
     console.log(data);
-    fs.writeFile("README.md", JSON.stringify(data, null, 2), function(err){
+    fs.writeFile("README.md", markDown(data), function(err){
         if (err){
             console.log(err);
         }else{
             console.log("README created!");
         }
+        const writeReadMe = markDown(data);
     })
-    generateMarkDown();
+    // const writeReadMe = markDown();
+    // writeReadMe(data);
 });
 
 // function to write README file

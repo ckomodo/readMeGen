@@ -12,6 +12,4 @@ const markDown = function generateMarkdown(data) {
           # Questions ${data.Questions}`
 }
 
-module.exports = {
-  markDown: markDown
-}; //refer to module 8
+module.exports = markDown; //refer to module 8
