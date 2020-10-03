@@ -1,26 +1,11 @@
-//TODO: npm init
-//TODO: install dependencies - inquirer
-//TODO: require all dependencies I'll need - fs
-//TODO: create an array of questions
-//TODO: write a readme in a markdown file as a template (copy/paste into readme gen function)
-//TODO: function that will generate my readme template
-//TODO: use inquirer to prompt users with questions(questions from readme file in class repo)
-//TODO: object of answers expected from inquirer, use these answers to pass into my readme gen function. Check module.exports
-//TODO:write file using template generated from readme function
-//TODO: use back ticks e.g. return `# ${data.title}`
-//TODO: 
 
 const inquirer = require("inquirer")
 const fs = require("fs");
 const markDown = require("./generateMarkdown.js");
-// const newMarkDown = require("./generateMarkdown.js")
 require ("./generateMarkdown.js");
-// const writeReadMe = markDown();
 
-// const newMarkDown = generateMarkDown();
-// console.log(newMarkDown.markDown());
 // array of questions for user
-const questions = inquirer.prompt([
+const questions = [
     {
         type: "input",
         name: "Title",
@@ -34,7 +19,7 @@ const questions = inquirer.prompt([
     {
         type: "input",
         name: "Contents",
-        message: "What are the contents of your README file?"
+        message: "What are the contents of your README file? Use commas to separate"
     },
     {
         type: "input",
@@ -60,7 +45,7 @@ const questions = inquirer.prompt([
     },
     {
         type: "input",
-        name: "Contributing",
+        name: "Contributors",
         message: "Who worked on or contributed to this program?"
     },
     {
@@ -70,39 +55,100 @@ const questions = inquirer.prompt([
     },
     {
         type: "input",
-        name: "Questions",
-        message: ["Type in your Github username and email address"]
+        name: "Github",
+        message: ["Type in your Github username"]
     },
-]).then(function (data) {
-    console.log(data);
-    fs.writeFile("README.md", markDown(data), function(err){
+    {
+        type: "input",
+        name: "Email",
+        message: ["Type in your email address"]
+    }
+]
+
+inquirer.prompt(questions).then(function (data) { // prints each response to readme
+
+    fs.appendFileSync("README.md", ("# Project Title" + '\n' + data.Title) + '\n', function (err){ 
         if (err){
-            console.log(err);
+            return console.log(err);
         }else{
-            console.log("README created!");
+            console.log("added to readme.md");
         }
-        const writeReadMe = markDown(data);
+       
     })
-    // const writeReadMe = markDown();
-    // writeReadMe(data);
+    fs.appendFileSync("README.md", ("# Description" + '\n' + data.Description) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Contents" + '\n' + data.Contents) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Installation" + '\n' + data.Installation) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Usage" + '\n' + data.Usage) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Licence" + '\n' + data.License) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Authors" + '\n' + data.Contributors) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Program Testing" + '\n' + data.Test) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Github" + '\n' + data.Github) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+    fs.appendFileSync("README.md", ("# Email address" + '\n' + data.Email) + '\n', function (err){
+        if (err){
+            return console.log(err);
+        }else{
+            console.log("added to readme.md");
+        }
+       
+    })
+
+
+
+   
 });
-
-// function to write README file
-// function writeToFile(fileName, data) {
-//     fs.writeFile("README.md", markDown, function(err){
-//         if (err){
-//             console.log(err);
-//         }else{
-//             console.log("README created!");
-//         }
-//     })
-    
-// }
-
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-init();
